@@ -18,4 +18,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('invitations/{invitation}', [TeamInvitationController::class, 'decline'])->name('invitations.decline');
 });
 
+Route::get('/api/health', function () {
+    return response()->json(['status' => 'ok', 'app_version' => config('app.version'), 'env' => config('app.env')]);
+});
+
 require __DIR__.'/settings.php';
